@@ -1,28 +1,83 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="app">
+        <Tree class="tree" :data="treeData" @nodeClick="handleNodeClick"/>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Tree from './components/G6-Tree.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    name: 'App',
+    components: {
+        Tree
+    },
+    data() {
+        return {
+            // 数据若变动 需要设置唯一key
+            treeData: {
+                "name": "XX党总支",
+                "children": [
+                    {
+                        "name": "第三党支部",
+                        "children": [
+                            {
+                                "name": "党小组一"
+                            },
+                            {
+                                "name": "党小组二"
+                            },
+                            {
+                                "name": "党小组三"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "临时党支部一",
+                        "children": [
+                            {
+                                "name": "党小组一"
+                            },
+                            {
+                                "name": "党小组二"
+                            },
+                            {
+                                "name": "党小组三"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "临时党支部二"
+                    },
+                    {
+                        "name": "临时党支部三"
+                    },
+                    {
+                        "name": "临时党支部四"
+                    },
+                    {
+                        "name": "临时党支部五"
+                    }
+                ]
+            }
+        }
+    },
+    methods: {
+        handleNodeClick(node) { // 点击事件
+            console.log(node);
+        }
+    }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    html, body {
+        padding: 0;
+        margin: 0;
+    }
+    .tree {
+        margin: 0 auto;
+        text-align: center;
+    }
 </style>
